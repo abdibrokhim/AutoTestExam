@@ -4,18 +4,14 @@ const BasicPageWrapper = ({ children }) => {
     return (
         <div 
             style={{
-                textAlign: 'center',
+                // textAlign: 'center',
             }}
         >
             <div
-                // className="container-fluid"
+                className="container-fluid"
                 style={{
                     backgroundColor: colors.const_light_bg,
-                    minHeight: '100vh',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    justifyContent: 'center',
+                    maxHeight: '100vh',
                     fontSize: 'calc(10px + 2vmin)',
                     color: colors.const_dark_text,
                 }}>
