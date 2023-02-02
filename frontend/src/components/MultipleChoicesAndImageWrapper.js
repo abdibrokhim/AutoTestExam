@@ -1,6 +1,6 @@
 import React from 'react';
 
-const AnswerAndImageWrapper = ({ children }) => {
+const MultipleChoicesAndImageWrapper = ({ children }) => {
     return (
         <div 
             className=''>
@@ -12,4 +12,4 @@ const AnswerAndImageWrapper = ({ children }) => {
     );
 }
 
-export default AnswerAndImageWrapper;
+export default MultipleChoicesAndImageWrapper;

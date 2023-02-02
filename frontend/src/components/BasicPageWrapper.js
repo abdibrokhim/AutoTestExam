@@ -8,10 +8,10 @@ const BasicPageWrapper = ({ children }) => {
             }}
         >
             <div
-                className="container-fluid"
+                className="container-fluid pt-3 pb-5"
                 style={{
                     backgroundColor: colors.const_light_bg,
-                    maxHeight: '100vh',
+                    minHeight: '100vh',
                     fontSize: 'calc(10px + 2vmin)',
                     color: colors.const_dark_text,
                 }}>
