@@ -1,5 +1,5 @@
 import React from 'react';
-import colors from '../colors';
+// import colors from '../colors';
 
 const NavigateQuestionButtons = ({ onQuestionClick, isAnsweredCorrectly }) => {
     return (
@@ -21,8 +21,8 @@ const NavigateQuestionButtons = ({ onQuestionClick, isAnsweredCorrectly }) => {
                         display: 'flex',
                         justifyContent: 'center',
                         // border: `1px solid ${colors.const_dark_subtext}`, 
-                        backgroundColor: `${isAnsweredCorrectly ? colors.const_false_answer : ''}`,
-                        color: `${isAnsweredCorrectly ? colors.const_light_text : ''}`,
+                        // backgroundColor: `${isAnsweredCorrectly ? colors.const_false_answer : ''}`,
+                        // color: `${isAnsweredCorrectly ? colors.const_light_text : ''}`,
                     }}
                     // className='rounded-md outline-none cursor-pointer shadow-md hover:shadow-xl transition'
                     className={`rounded-md outline-none cursor-pointer shadow-md hover:shadow-xl transition 
