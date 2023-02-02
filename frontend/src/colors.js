@@ -7,6 +7,8 @@ const colors = {
     const_light_text: '#f6f7f9',
     const_dark_text: '#040404',
     const_dark_subtext: '#00000099',
+    const_true_answer: '#0BBA0E',
+    const_false_answer: '#BA0B32',
 };
 
 export default colors

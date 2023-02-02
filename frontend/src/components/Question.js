@@ -5,13 +5,13 @@ const Question = ({ query }) => {
     return (
         <div>
             <div
-                className='cursor-pointer shadow-md hover:shadow-md-bl transition'               
+                className='cursor-pointer shadow-md hover:shadow-lg transition'
                 style={{
                     fontSize: '18px',
                     color: colors.const_dark_text,
                     marginTop: '20px',
                     padding: '10px 20px',
-                    border: `1px solid ${colors.const_dark_subtext}`,    
+                    // border: `1px solid ${colors.const_dark_subtext}`,
                     // borderRadius: '10px',
                 }}>
                 {query}

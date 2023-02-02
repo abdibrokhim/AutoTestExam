@@ -15,9 +15,10 @@ const AutoTestPage = () => {
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [currentAnswer, setCurrentAnswer] = useState('');
     // const [loading, setLoading] = useState(true);
-    const [isAnsweredCorrectly, setIsAnsweredCorrectly] = useState(false);
+    const [isAnsweredCorrectly, setIsAnsweredCorrectly] = useState(2);
 
     useEffect(() => {
+        console.log('----------start-----------');
         console.log('----------answer-----------')
         console.log(data[currentQuestionIndex].answer);
         console.log('----------choosen-----------')
@@ -26,10 +27,10 @@ const AutoTestPage = () => {
         console.log(parseInt(currentAnswer) === data[currentQuestionIndex].answer)
         if (parseInt(currentAnswer) === data[currentQuestionIndex].answer) {
             console.log('Correct');
-            setIsAnsweredCorrectly(true);
+            setIsAnsweredCorrectly(1);
         } else {
             console.log('Incorrect');
-            setIsAnsweredCorrectly(false);
+            setIsAnsweredCorrectly(0);
         }
     }, [currentAnswer, currentQuestionIndex]);
 
@@ -73,13 +74,21 @@ const AutoTestPage = () => {
         <BasicPageWrapper>
             <div>Current Question: {currentQuestionIndex}</div>
             <div>Choosen Answer Index: {currentAnswer}</div>
-            <Question query={data[currentQuestionIndex].question} />
+            <Question 
+                query={data[currentQuestionIndex].question} />
             <MultipleChoicesAndImageWrapper>
-                <MultipleChoices options={data[currentQuestionIndex].options} onChoiceClick={(index) => setCurrentAnswer(index)}/>
-                <QuestionImage image={data[currentQuestionIndex].image} />
+                <MultipleChoices 
+                    options={data[currentQuestionIndex].options}
+                    onChoiceClick={(index) => setCurrentAnswer(index)} 
+                    isAnsweredCorrectly={isAnsweredCorrectly}/>
+                <QuestionImage 
+                    image={data[currentQuestionIndex].image} />
             </MultipleChoicesAndImageWrapper>
-            <QuestionHelperText comment={data[currentQuestionIndex].comment} />
-            <NavigateQuestionButtons onQuestionClick={(index) => setCurrentQuestionIndex(index)} />
+            <QuestionHelperText 
+                comment={data[currentQuestionIndex].comment} />
+            <NavigateQuestionButtons 
+                onQuestionClick={(index) => setCurrentQuestionIndex(index)} 
+                isAnsweredCorrectly={isAnsweredCorrectly} />
         </BasicPageWrapper>
     );
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import colors from '../colors';
+// import colors from '../colors';
 
 const QuestionHelperText = ({ comment }) => {
     return (
@@ -8,20 +8,20 @@ const QuestionHelperText = ({ comment }) => {
             style={{
                 marginTop: '20px',
             }}>
-            <button 
+            <div 
                 style={{
                     fontSize: '14px',
                     padding: '10px 20px',
                     display: 'flex',
                     justifyContent: 'center',
-                    border: `1px solid ${colors.const_dark_subtext}`, 
+                    // border: `1px solid ${colors.const_dark_subtext}`, 
                 }}
                 type="button" 
-                className="btn cursor-pointer shadow-md hover:shadow-md-bl transition" 
+                className="d-inline-block outline-none cursor-pointer shadow-md hover:shadow-lg transition rounded-md" 
                 data-bs-toggle="modal" 
                 data-bs-target="#exampleModal">
-                    Comment
-            </button>
+                    Comment 
+            </div>
             <div 
                 className="modal fade" 
                 id="exampleModal" 
