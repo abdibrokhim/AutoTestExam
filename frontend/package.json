@@ -2,7 +2,10 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://127.0.0.1:8000",
+  "proxy": [
+    "http://127.0.0.1:8000",
+    "https://77e0-84-54-115-62.in.ngrok.io/"
+  ],
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",

@@ -27,7 +27,10 @@ SECRET_KEY = 'django-insecure-_mk%0n-!stc^1=y078_1m9pq3njjp(p=oq$cwkj2-7kzj94glc
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '77e0-84-54-115-62.in.ngrok.io',
+    '127.0.0.1',
+]
 
 
 # Application definition
@@ -56,12 +59,9 @@ MIDDLEWARE = [
     "django.middleware.common.CommonMiddleware",
 ]
 
-# CORS_ALLOWED_ORIGINS = [
-#     "https://example.com",
-#     "https://sub.example.com",
-#     "http://localhost:8080",
-#     "http://127.0.0.1:9000",
-# ]
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:3000',
+]
 
 ROOT_URLCONF = 'config.urls'
 

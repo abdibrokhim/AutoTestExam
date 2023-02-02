@@ -16,34 +16,35 @@ const AutoTestPage = () => {
     const [currentAnswer, setCurrentAnswer] = useState('');
     // const [loading, setLoading] = useState(true);
     const [isAnsweredCorrectly, setIsAnsweredCorrectly] = useState(2);
+    // const [buttonId, setButtonId] = useState('');
 
-    useEffect(() => {
-        console.log('----------start-----------');
-        console.log('----------answer-----------')
-        console.log(data[currentQuestionIndex].answer);
-        console.log('----------choosen-----------')
-        console.log(currentAnswer);
-        console.log('----------checker-----------')
-        console.log(parseInt(currentAnswer) === data[currentQuestionIndex].answer)
-        if (parseInt(currentAnswer) === data[currentQuestionIndex].answer) {
-            console.log('Correct');
-            setIsAnsweredCorrectly(1);
-        } else {
-            console.log('Incorrect');
-            setIsAnsweredCorrectly(0);
-        }
-    }, [currentAnswer, currentQuestionIndex]);
+    // useEffect(() => {
+    //     console.log('----------start-----------');
+    //     console.log('----------answer-----------')
+    //     console.log(data[currentQuestionIndex].answer);
+    //     console.log('----------choosen-----------')
+    //     console.log(currentAnswer);
+    //     console.log('----------checker-----------')
+    //     console.log(parseInt(currentAnswer) === data[currentQuestionIndex].answer)
+    //     if (parseInt(currentAnswer) === data[currentQuestionIndex].answer) {
+    //         console.log('Correct');
+    //         setIsAnsweredCorrectly(1);
+    //     } else {
+    //         console.log('Incorrect');
+    //         setIsAnsweredCorrectly(0);
+    //     }
+    // }, []);
 
-    useEffect(() => {   
-        if (isAnsweredCorrectly) {
-            // console.log('Correct');
-            if (currentQuestionIndex < data.length - 1) {
-                setCurrentQuestionIndex(currentQuestionIndex + 1);
-            }
-        } else {
-            // console.log('Incorrect');
-        }
-    }, [isAnsweredCorrectly, currentQuestionIndex]);
+    // useEffect(() => {   
+    //     if (isAnsweredCorrectly) {
+    //         // console.log('Correct');
+    //         if (currentQuestionIndex < data.length - 1) {
+    //             setCurrentQuestionIndex(currentQuestionIndex + 1);
+    //         }
+    //     } else {
+    //         // console.log('Incorrect');
+    //     }
+    // }, []);
 
     useEffect(() => {
         console.log('Fetching');
@@ -57,58 +58,47 @@ const AutoTestPage = () => {
             .catch(err => {
                 console.log(err);
             });
-    }, [questions]);
+    }, []);
 
     return (
-        // <BasicPageWrapper>
-        //     <div>{currentQuestionIndex}</div>
-        //     <div>{questions}</div>
-        //     <Question query={questions[currentQuestionIndex].question}/>
-        //     <MultipleChoicesAndImageWrapper>
-        //         <MultipleChoices query={questions[currentQuestionIndex].options}/>
-        //         <QuestionImage image={questions[currentQuestionIndex].image}/>
-        //     </MultipleChoicesAndImageWrapper>
-        //     <QuestionHelperText comment={questions[currentQuestionIndex].comment} />
-        //     <NavigateQuestionButtons onQuestionClick={(index) => setCurrentQuestionIndex(index)} />
-        // </BasicPageWrapper>
-        // <BasicPageWrapper>
-        //     <div>Current Question: {currentQuestionIndex}</div>
-        //     <div>Choosen Answer Index: {currentAnswer}</div>
-        //     <Question 
-        //         query={data[currentQuestionIndex].question} />
-        //     <MultipleChoicesAndImageWrapper>
-        //         <MultipleChoices 
-        //             options={data[currentQuestionIndex].options}
-        //             onChoiceClick={(index) => setCurrentAnswer(index)} 
-        //             isAnsweredCorrectly={isAnsweredCorrectly}/>
-        //         <QuestionImage 
-        //             image={data[currentQuestionIndex].image} />
-        //     </MultipleChoicesAndImageWrapper>
-        //     <QuestionHelperText 
-        //         comment={data[currentQuestionIndex].comment} />
-        //     <NavigateQuestionButtons 
-        //         onQuestionClick={(index) => setCurrentQuestionIndex(index)} 
-        //         isAnsweredCorrectly={isAnsweredCorrectly} />
-        // </BasicPageWrapper>
         <BasicPageWrapper>
             <div>Current Question: {currentQuestionIndex}</div>
             <div>Choosen Answer Index: {currentAnswer}</div>
             <Question 
-                query={questions[currentQuestionIndex].question} />
+                query={data[currentQuestionIndex].question} />
             <MultipleChoicesAndImageWrapper>
                 <MultipleChoices 
-                    options={questions[currentQuestionIndex].options}
-                    onChoiceClick={(index) => setCurrentAnswer(index)} 
-                    isAnsweredCorrectly={isAnsweredCorrectly}/>
+                    options={data[currentQuestionIndex].options}
+                    correctAnswer={data[currentQuestionIndex].answer} 
+                    userChoice={currentAnswer}
+                    onChoiceClick={(index) => setCurrentAnswer(index)} />
                 <QuestionImage 
-                    image={questions[currentQuestionIndex].image} />
+                    image={data[currentQuestionIndex].image} />
             </MultipleChoicesAndImageWrapper>
             <QuestionHelperText 
-                comment={questions[currentQuestionIndex].comment} />
+                comment={data[currentQuestionIndex].comment} />
             <NavigateQuestionButtons 
-                onQuestionClick={(index) => setCurrentQuestionIndex(index)} 
-                isAnsweredCorrectly={isAnsweredCorrectly} />
+                onQuestionClick={(index) => setCurrentQuestionIndex(index)} />
         </BasicPageWrapper>
+        // <BasicPageWrapper>
+        //     <div>Current Question: {currentQuestionIndex}</div>
+        //     <div>Choosen Answer Index: {currentAnswer}</div>
+        //     <Question 
+        //         query={questions[currentQuestionIndex].question} />
+        //     <MultipleChoicesAndImageWrapper>
+        //         <MultipleChoices 
+        //             options={questions[currentQuestionIndex].options}
+        //             onChoiceClick={(index) => setCurrentAnswer(index)} 
+        //             isAnsweredCorrectly={isAnsweredCorrectly}/>
+        //         <QuestionImage 
+        //             image={questions[currentQuestionIndex].image} />
+        //     </MultipleChoicesAndImageWrapper>
+        //     <QuestionHelperText 
+        //         comment={questions[currentQuestionIndex].comment} />
+        //     <NavigateQuestionButtons 
+        //         onQuestionClick={(index) => setCurrentQuestionIndex(index)} 
+        //         isAnsweredCorrectly={isAnsweredCorrectly} />
+        // </BasicPageWrapper>
     );
 }
 

@@ -25,11 +25,9 @@ const NavigateQuestionButtons = ({ onQuestionClick, isAnsweredCorrectly }) => {
                         // color: `${isAnsweredCorrectly ? colors.const_light_text : ''}`,
                     }}
                     // className='rounded-md outline-none cursor-pointer shadow-md hover:shadow-xl transition'
-                    className={`rounded-md outline-none cursor-pointer shadow-md hover:shadow-xl transition 
-                        ${isAnsweredCorrectly === 1 ? 'bg-green-600 text-slate-50 shadow-green-600 shadow-md' : 
-                        isAnsweredCorrectly === 0 ? 'bg-rose-600 text-slate-50 shadow-rose-600 shadow-md' : 
-                        'bg-gray-500 text-slate-50 shadow-md hover:shadow-xl'}`}
+                    className='rounded-md outline-none cursor-pointer shadow-md hover:shadow-xl transition'
                     key={i}
+                    id={i}
                     onClick={() => onQuestionClick(i)}>
                         {i + 1}
                 </div>

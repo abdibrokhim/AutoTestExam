@@ -9,6 +9,10 @@ const colors = {
     const_dark_subtext: '#00000099',
     const_true_answer: '#0BBA0E',
     const_false_answer: '#BA0B32',
+    button_bg_Red: 'bg-rose-600 text-slate-50 shadow-rose-600 shadow-md',
+    button_bg_Green: 'bg-green-600 text-slate-50 shadow-green-600 shadow-md',
+    query_br_Red: 'border-green-600 shadow-green-600 shadow-md',
+    query_br_Green: 'border-rose-600 shadow-rose-600 shadow-md',
 };
 
 export default colors
