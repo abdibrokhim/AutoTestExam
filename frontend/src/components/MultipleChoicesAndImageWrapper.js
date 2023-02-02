@@ -5,7 +5,7 @@ const MultipleChoicesAndImageWrapper = ({ children }) => {
         <div 
             className=''>
             <div 
-                className='row pt-3 align-items-center'>
+                className='row py-3 align-items-center'>
                 {children}
             </div>
         </div>

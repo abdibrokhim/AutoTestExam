@@ -46,19 +46,19 @@ const AutoTestPage = () => {
     //     }
     // }, []);
 
-    useEffect(() => {
-        console.log('Fetching');
-        axios.defaults.headers.post['Content-Type'] ='application/json; charset=utf-8';
-        axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
-        axios.get('/v1/api/question-list/')
-            .then(res => {
-                console.log(res.data);
-                setQuestions(res.data);
-            })
-            .catch(err => {
-                console.log(err);
-            });
-    }, []);
+    // useEffect(() => {
+    //     console.log('Fetching');
+    //     axios.defaults.headers.post['Content-Type'] ='application/json; charset=utf-8';
+    //     axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
+    //     axios.get('/v1/api/question-list/')
+    //         .then(res => {
+    //             console.log(res.data);
+    //             setQuestions(res.data);
+    //         })
+    //         .catch(err => {
+    //             console.log(err);
+    //         });
+    // }, []);
 
     return (
         <BasicPageWrapper>
@@ -71,6 +71,7 @@ const AutoTestPage = () => {
                     options={data[currentQuestionIndex].options}
                     correctAnswer={data[currentQuestionIndex].answer} 
                     userChoice={currentAnswer}
+                    currentQuestionIndex={currentQuestionIndex}
                     onChoiceClick={(index) => setCurrentAnswer(index)} />
                 <QuestionImage 
                     image={data[currentQuestionIndex].image} />

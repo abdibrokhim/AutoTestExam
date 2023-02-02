@@ -1,7 +1,7 @@
 import React from 'react';
 import colors from '../colors';
 
-const MultipleChoices = ({ options, correctAnswer, onChoiceClick }) => {
+const MultipleChoices = ({ options, correctAnswer, currentQuestionIndex, onChoiceClick }) => {
     // const [isCorrect, setIsCorrect] = React.useState(null);
     const [selectedOption, setSelectedOption] = React.useState(null);
 
@@ -24,15 +24,19 @@ const MultipleChoices = ({ options, correctAnswer, onChoiceClick }) => {
 
     return (
         <div 
-            className='col'>
+            className='col-12 col-md-6'>
             {Object.entries(options).map(([key, value]) => (
                 <div 
                     onClick={() => onOptionClick(key)}
                     id={key}
                     // className={`cursor-pointer shadow-md hover:shadow-md transition ${true ? 'border-rose-600' : ''}`}
                     // className={`rounded-md cursor-pointer shadow-md hover:shadow-xl transition ${false ? 'border-green-600' : ''}`}
-                    className={`rounded-md outline-none cursor-pointer shadow-md hover:shadow-xl transition` 
-                        + `${key === selectedOption ? (selectedOption === parseInt(correctAnswer) ? colors.query_br_Green : colors.query_br_Red) : ''}`}
+                    className={`` 
+                        + `${key === selectedOption ? 
+                            (selectedOption ==! parseInt(correctAnswer) ? 
+                            colors.query_br_Red : colors.query_br_Green) : 
+                            'rounded-md outline-none cursor-pointer shadow-md hover:shadow-xl transition'
+                    }`}
                     style={{
                         fontSize: '16px',
                         color: colors.const_dark_text,

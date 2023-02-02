@@ -8,7 +8,7 @@ const BasicPageWrapper = ({ children }) => {
             }}
         >
             <div
-                className="container-fluid pt-3 pb-5"
+                className="container-fluid px-3 mx-auto py-4"
                 style={{
                     backgroundColor: colors.const_light_bg,
                     minHeight: '100vh',

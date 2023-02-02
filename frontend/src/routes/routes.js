@@ -4,6 +4,7 @@ import NoMatchPage from '../pages/NoMatchPage';
 import LandingPage from '../pages/LandingPage';
 import HomePage from '../pages/HomePage';
 import AutoTestPage from '../pages/AutoTestPage';
+// import AutoTestPageDemo from '../pages/AutoTestPageDemo';
 
 const Router = () => (
   <Routes>
