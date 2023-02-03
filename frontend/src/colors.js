@@ -11,8 +11,8 @@ const colors = {
     const_false_answer: '#BA0B32',
     button_bg_Red: 'bg-rose-600 text-slate-50 shadow-rose-600 shadow-md',
     button_bg_Green: 'bg-green-600 text-slate-50 shadow-green-600 shadow-md',
-    query_br_Green: 'rounded-md outline-none cursor-pointer shadow-md transition hover:shadow-green-600 shadow-green-600',
-    query_br_Red: 'rounded-md outline-none cursor-pointer shadow-md transition hover:shadow-rose-600 shadow-rose-600',
+    query_br_Green: 'rounded-md outline-none cursor-pointer shadow-md transition hover:shadow-green-600 shadow-green-600 text-start',
+    query_br_Red: 'rounded-md outline-none cursor-pointer shadow-md transition hover:shadow-rose-600 shadow-rose-600 text-start',
     // query_br_Green: 'bg-green-600 shadow-green-600 hover:shadow-green-600 shadow-md',
 };
 

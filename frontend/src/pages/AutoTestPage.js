@@ -17,55 +17,13 @@ import colors from '../colors';
 
 const AutoTestPage = () => {
     let { testAmount } = useParams();
+
     const [questions, setQuestions] = useState([]);
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [currentAnswer, setCurrentAnswer] = useState('');
-    // const [loading, setLoading] = useState(true);
     const [isAnsweredCorrectly, setIsAnsweredCorrectly] = useState('');
     // const [buttonId, setButtonId] = useState('');
     const [loading, setLoading] = useState(true);
-
-    // useEffect(() => {
-    //     console.log('----------start-----------');
-    //     console.log('----------answer-----------')
-    //     console.log(data[currentQuestionIndex].answer);
-    //     console.log('----------choosen-----------')
-    //     console.log(currentAnswer);
-    //     console.log('----------checker-----------')
-    //     console.log(parseInt(currentAnswer) === data[currentQuestionIndex].answer)
-    //     if (parseInt(currentAnswer) === data[currentQuestionIndex].answer) {
-    //         console.log('Correct');
-    //         setIsAnsweredCorrectly(1);
-    //     } else {
-    //         console.log('Incorrect');
-    //         setIsAnsweredCorrectly(0);
-    //     }
-    // }, []);
-
-    // useEffect(() => {   
-    //     if (isAnsweredCorrectly) {
-    //         // console.log('Correct');
-    //         if (currentQuestionIndex < data.length - 1) {
-    //             setCurrentQuestionIndex(currentQuestionIndex + 1);
-    //         }
-    //     } else {
-    //         // console.log('Incorrect');
-    //     }
-    // }, []);
-
-    // useEffect(() => {
-    //     console.log('Fetching');
-    //     axios.defaults.headers.post['Content-Type'] ='application/json; charset=utf-8';
-    //     axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
-    //     axios.get('/v1/api/question-list/')
-    //         .then(res => {
-    //             console.log(res.data);
-    //             setQuestions(res.data);
-    //         })
-    //         .catch(err => {
-    //             console.log(err);
-    //         });
-    // }, []);
 
     useEffect(() => {
         setTimeout(() => {
@@ -95,7 +53,7 @@ const AutoTestPage = () => {
                                 options={questions[currentQuestionIndex].options}
                                 correctAnswer={questions[currentQuestionIndex].answer} 
                                 userChoice={currentAnswer}
-                                currentQuestionIndex={currentQuestionIndex}
+                                x={currentQuestionIndex}
                                 onChoiceClick={(index) => setCurrentAnswer(index)} 
                                 onHandleChecker={(state) => setIsAnsweredCorrectly(state)}/>
                             <QuestionImage 
@@ -110,31 +68,6 @@ const AutoTestPage = () => {
                 </SecondaryPageWrapper>
             }
         </>
-        // <SecondaryPageWrapper>
-        //     {/* <div>Current Question: {currentQuestionIndex}</div> */}
-        //     {/* <div>Choosen Answer Index: {currentAnswer}</div> */}
-        //     <Question 
-        //         query={questions[currentQuestionIndex].question} />
-        //     <>
-        //         <MultipleChoicesAndImageWrapper>
-        //             <MultipleChoices 
-        //                 options={questions[currentQuestionIndex].options}
-        //                 correctAnswer={questions[currentQuestionIndex].answer} 
-        //                 userChoice={currentAnswer}
-        //                 currentQuestionIndex={currentQuestionIndex}
-        //                 onChoiceClick={(index) => setCurrentAnswer(index)} 
-        //                 onHandleChecker={(state) => setIsAnsweredCorrectly(state)}/>
-        //             <QuestionImage 
-        //                 image={questions[currentQuestionIndex].image} />
-        //         </MultipleChoicesAndImageWrapper>
-        //         <QuestionHelperText 
-        //             comment={questions[currentQuestionIndex].comment} />
-        //         <NavigateQuestionButtons 
-        //             onQuestionClick={(index) => setCurrentQuestionIndex(index)}
-        //             isAnsweredCorrectly={isAnsweredCorrectly} />
-        //         <QuestionPicker size={20}/>
-        //     </> 
-        // </SecondaryPageWrapper>
     );
 }
 
