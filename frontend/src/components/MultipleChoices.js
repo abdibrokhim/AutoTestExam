@@ -1,9 +1,10 @@
 import React from 'react';
 import colors from '../colors';
 
-const MultipleChoices = ({ options, correctAnswer, currentQuestionIndex, onChoiceClick }) => {
+const MultipleChoices = ({ options, correctAnswer, currentQuestionIndex, onChoiceClick, onHandleChecker }) => {
     // const [isCorrect, setIsCorrect] = React.useState(null);
     const [selectedOption, setSelectedOption] = React.useState(null);
+    // const [isSelected, setIsSelected] = React.useState(false);
 
     const onOptionClick = (index) => {
         console.log('----------correctAnswer----------');
@@ -17,20 +18,20 @@ const MultipleChoices = ({ options, correctAnswer, currentQuestionIndex, onChoic
         console.log(index);
         if (parseInt(index) === parseInt(correctAnswer)) {
             console.log('Correct');
+            onHandleChecker(true);
         } else {
             console.log('Incorrect');
+            onHandleChecker(false);
         }
     }
 
     return (
         <div 
-            className='col-12 col-md-6'>
+            className='col-12 col-lg-6'>
             {Object.entries(options).map(([key, value]) => (
                 <div 
                     onClick={() => onOptionClick(key)}
                     id={key}
-                    // className={`cursor-pointer shadow-md hover:shadow-md transition ${true ? 'border-rose-600' : ''}`}
-                    // className={`rounded-md cursor-pointer shadow-md hover:shadow-xl transition ${false ? 'border-green-600' : ''}`}
                     className={`` 
                         + `${key === selectedOption ? 
                             (selectedOption ==! parseInt(correctAnswer) ? 
@@ -43,9 +44,6 @@ const MultipleChoices = ({ options, correctAnswer, currentQuestionIndex, onChoic
                         width: '100%',
                         marginTop: '20px',
                         padding: '10px 20px',
-                        // border: `1px solid ${colors.const_dark_subtext}`, 
-                        // border: `${true ? '1px solid' + colors.const_true_answer : ''}`, 
-                        // borderRadius: '10px',
                     }}
                     key={key}>
                         {value}

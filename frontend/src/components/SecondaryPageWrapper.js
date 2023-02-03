@@ -1,6 +1,6 @@
 import colors from "../colors";
 
-const BasicPageWrapper = ({ children }) => {
+const SecondaryPageWrapper = ({ children }) => {
     return (
         <div 
             style={{
@@ -21,4 +21,4 @@ const BasicPageWrapper = ({ children }) => {
     );
 }
 
-export default BasicPageWrapper;
+export default SecondaryPageWrapper;

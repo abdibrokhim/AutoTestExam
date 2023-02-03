@@ -17,7 +17,7 @@ const data = [
         "image": "http://127.0.0.1:8000/media/images/6c0e122c-bc5a-47d3-bc6a-c9c2a6d6c79c.jpeg",
         "question": "what is this",
         "comment": "this is comment",
-        "answer": 1,
+        "answer": 0,
         "options": {
             "0": "wolf",
             "1": "lion",
@@ -26,11 +26,11 @@ const data = [
         }
     },
     {
-        "id": 1,
+        "id": 3,
         "image": "http://127.0.0.1:8000/media/images/photo_2023-01-19_13.01.05.jpeg",
         "question": "Who are you?",
         "comment": "no comment",
-        "answer": 2,
+        "answer": 0,
         "options": {
             "0": "me",
             "1": "we",
@@ -39,7 +39,7 @@ const data = [
         }
     },
     {
-        "id": 2,
+        "id": 4,
         "image": "http://127.0.0.1:8000/media/images/6c0e122c-bc5a-47d3-bc6a-c9c2a6d6c79c.jpeg",
         "question": "what is this",
         "comment": "this is comment",
@@ -52,7 +52,7 @@ const data = [
         }
     },
     {
-        "id": 1,
+        "id": 5,
         "image": "http://127.0.0.1:8000/media/images/photo_2023-01-19_13.01.05.jpeg",
         "question": "Who are you?",
         "comment": "no comment",
@@ -65,7 +65,7 @@ const data = [
         }
     },
     {
-        "id": 2,
+        "id": 6,
         "image": "http://127.0.0.1:8000/media/images/6c0e122c-bc5a-47d3-bc6a-c9c2a6d6c79c.jpeg",
         "question": "what is this",
         "comment": "this is comment",
@@ -78,7 +78,7 @@ const data = [
         }
     },
     {
-        "id": 1,
+        "id": 7,
         "image": "http://127.0.0.1:8000/media/images/photo_2023-01-19_13.01.05.jpeg",
         "question": "Who are you?",
         "comment": "no comment",
@@ -91,7 +91,7 @@ const data = [
         }
     },
     {
-        "id": 2,
+        "id": 8,
         "image": "http://127.0.0.1:8000/media/images/6c0e122c-bc5a-47d3-bc6a-c9c2a6d6c79c.jpeg",
         "question": "what is this",
         "comment": "this is comment",
@@ -104,7 +104,7 @@ const data = [
         }
     },
     {
-        "id": 1,
+        "id": 9,
         "image": "http://127.0.0.1:8000/media/images/photo_2023-01-19_13.01.05.jpeg",
         "question": "Who are you?",
         "comment": "no comment",
@@ -117,7 +117,7 @@ const data = [
         }
     },
     {
-        "id": 2,
+        "id": 10,
         "image": "http://127.0.0.1:8000/media/images/6c0e122c-bc5a-47d3-bc6a-c9c2a6d6c79c.jpeg",
         "question": "what is this",
         "comment": "this is comment",

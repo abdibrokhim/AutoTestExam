@@ -1,22 +1,29 @@
 import React, { useEffect, useState } from 'react';
+import { useParams } from "react-router-dom";
+import PuffLoader from "react-spinners/PuffLoader";
 // import React, { useState } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import NavigateQuestionButtons from '../components/NavigateQuestionButtons';
 import QuestionHelperText from '../components/QuestionHelperText';
 import Question from '../components/Question';
 import MultipleChoicesAndImageWrapper from '../components/MultipleChoicesAndImageWrapper';
 import MultipleChoices from '../components/MultipleChoices';
 import QuestionImage from '../components/QuestionImage';
-import BasicPageWrapper from '../components/BasicPageWrapper';
-import data from '../data';
+import SecondaryPageWrapper from '../components/SecondaryPageWrapper';
+// import data from '../data';
+import QuestionPicker from '../components/QuestionPicker';
+import PrimaryPageWrapper from '../components/PrimaryPageWrapper';
+import colors from '../colors';
 
 const AutoTestPage = () => {
+    let { testAmount } = useParams();
     const [questions, setQuestions] = useState([]);
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [currentAnswer, setCurrentAnswer] = useState('');
     // const [loading, setLoading] = useState(true);
-    const [isAnsweredCorrectly, setIsAnsweredCorrectly] = useState(2);
+    const [isAnsweredCorrectly, setIsAnsweredCorrectly] = useState('');
     // const [buttonId, setButtonId] = useState('');
+    const [loading, setLoading] = useState(true);
 
     // useEffect(() => {
     //     console.log('----------start-----------');
@@ -60,46 +67,74 @@ const AutoTestPage = () => {
     //         });
     // }, []);
 
+    useEffect(() => {
+        setTimeout(() => {
+            setLoading(false);
+        }, 2000);
+    }, [testAmount]);
+
     return (
-        <BasicPageWrapper>
-            <div>Current Question: {currentQuestionIndex}</div>
-            <div>Choosen Answer Index: {currentAnswer}</div>
-            <Question 
-                query={data[currentQuestionIndex].question} />
-            <MultipleChoicesAndImageWrapper>
-                <MultipleChoices 
-                    options={data[currentQuestionIndex].options}
-                    correctAnswer={data[currentQuestionIndex].answer} 
-                    userChoice={currentAnswer}
-                    currentQuestionIndex={currentQuestionIndex}
-                    onChoiceClick={(index) => setCurrentAnswer(index)} />
-                <QuestionImage 
-                    image={data[currentQuestionIndex].image} />
-            </MultipleChoicesAndImageWrapper>
-            <QuestionHelperText 
-                comment={data[currentQuestionIndex].comment} />
-            <NavigateQuestionButtons 
-                onQuestionClick={(index) => setCurrentQuestionIndex(index)} />
-        </BasicPageWrapper>
-        // <BasicPageWrapper>
-        //     <div>Current Question: {currentQuestionIndex}</div>
-        //     <div>Choosen Answer Index: {currentAnswer}</div>
+        <>
+            {loading ? 
+                <PrimaryPageWrapper>
+                    <PuffLoader 
+                        color={colors.const_brand_name} /> 
+                    <QuestionPicker 
+                        size={2} 
+                        onQuestionReady={(questions) => setQuestions(questions)}/>
+                </PrimaryPageWrapper>
+                : 
+                <SecondaryPageWrapper>
+                    {/* <div>Current Question: {currentQuestionIndex}</div> */}
+                    {/* <div>Choosen Answer Index: {currentAnswer}</div> */}
+                    <Question 
+                        query={questions[currentQuestionIndex].question} />
+                    <>
+                        <MultipleChoicesAndImageWrapper>
+                            <MultipleChoices 
+                                options={questions[currentQuestionIndex].options}
+                                correctAnswer={questions[currentQuestionIndex].answer} 
+                                userChoice={currentAnswer}
+                                currentQuestionIndex={currentQuestionIndex}
+                                onChoiceClick={(index) => setCurrentAnswer(index)} 
+                                onHandleChecker={(state) => setIsAnsweredCorrectly(state)}/>
+                            <QuestionImage 
+                                image={questions[currentQuestionIndex].image} />
+                        </MultipleChoicesAndImageWrapper>
+                        <QuestionHelperText 
+                            comment={questions[currentQuestionIndex].comment} />
+                        <NavigateQuestionButtons 
+                            onQuestionClick={(index) => setCurrentQuestionIndex(index)}
+                            isAnsweredCorrectly={isAnsweredCorrectly} />
+                    </> 
+                </SecondaryPageWrapper>
+            }
+        </>
+        // <SecondaryPageWrapper>
+        //     {/* <div>Current Question: {currentQuestionIndex}</div> */}
+        //     {/* <div>Choosen Answer Index: {currentAnswer}</div> */}
         //     <Question 
         //         query={questions[currentQuestionIndex].question} />
-        //     <MultipleChoicesAndImageWrapper>
-        //         <MultipleChoices 
-        //             options={questions[currentQuestionIndex].options}
-        //             onChoiceClick={(index) => setCurrentAnswer(index)} 
-        //             isAnsweredCorrectly={isAnsweredCorrectly}/>
-        //         <QuestionImage 
-        //             image={questions[currentQuestionIndex].image} />
-        //     </MultipleChoicesAndImageWrapper>
-        //     <QuestionHelperText 
-        //         comment={questions[currentQuestionIndex].comment} />
-        //     <NavigateQuestionButtons 
-        //         onQuestionClick={(index) => setCurrentQuestionIndex(index)} 
-        //         isAnsweredCorrectly={isAnsweredCorrectly} />
-        // </BasicPageWrapper>
+        //     <>
+        //         <MultipleChoicesAndImageWrapper>
+        //             <MultipleChoices 
+        //                 options={questions[currentQuestionIndex].options}
+        //                 correctAnswer={questions[currentQuestionIndex].answer} 
+        //                 userChoice={currentAnswer}
+        //                 currentQuestionIndex={currentQuestionIndex}
+        //                 onChoiceClick={(index) => setCurrentAnswer(index)} 
+        //                 onHandleChecker={(state) => setIsAnsweredCorrectly(state)}/>
+        //             <QuestionImage 
+        //                 image={questions[currentQuestionIndex].image} />
+        //         </MultipleChoicesAndImageWrapper>
+        //         <QuestionHelperText 
+        //             comment={questions[currentQuestionIndex].comment} />
+        //         <NavigateQuestionButtons 
+        //             onQuestionClick={(index) => setCurrentQuestionIndex(index)}
+        //             isAnsweredCorrectly={isAnsweredCorrectly} />
+        //         <QuestionPicker size={20}/>
+        //     </> 
+        // </SecondaryPageWrapper>
     );
 }
 

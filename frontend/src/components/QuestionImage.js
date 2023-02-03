@@ -3,7 +3,7 @@ import React from 'react';
 const QuestionImage = ({ image }) => {
     return (
         <div 
-            className='col-12 col-md-6'
+            className='col-12 col-lg-6 mt-5'
             style={{
                 // textAlign: 'center',
             }}>
