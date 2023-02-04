@@ -1,25 +1,41 @@
 import React from 'react';
 import colors from '../colors';
 
-const MultipleChoices = ({ options, correctAnswer, currentQuestionIndex, onChoiceClick, onHandleChecker }) => {
-    // const [isCorrect, setIsCorrect] = React.useState(null);
+const MultipleChoices = ({ 
+    options, 
+    correctAnswer, 
+    currentQuestionIndex, 
+    onChoiceClick, 
+    onHandleChecker, 
+    onPassedQuestions,
+}) => {
+
+    // const [isCorrect, setIsCorrect] = React.useState('');
     const [selectedOption, setSelectedOption] = React.useState(null);
-    // const [isSelected, setIsSelected] = React.useState(false);
-    const [currentQuestionId, setCurrentQuestionId] = React.useState(0);
+    const [currentQuestionId, setCurrentQuestionId] = React.useState('');
     const [passedQueries, setPassedQueries] = React.useState([]);
 
     const onOptionClick = (index) => {
+        console.log('----------currentQuestionId----------');
+        console.log(currentQuestionId);
         console.log('----------correctAnswer----------');
         console.log(correctAnswer);
+
         setSelectedOption(index);
         onChoiceClick(index);
-        setCurrentQuestionId(currentQuestionIndex);
-        if (!passedQueries.includes(currentQuestionIndex)) {
-            setPassedQueries([...passedQueries, currentQuestionId]);
+        setCurrentQuestionId(parseInt(currentQuestionIndex));
+        if (!passedQueries.includes(parseInt(currentQuestionIndex))) {
+            setPassedQueries([...passedQueries, currentQuestionIndex]);
             console.log('----------passedQueries----------');
             console.log(passedQueries);
         }
+        console.log(passedQueries);
     }
+
+    React.useEffect(() => {
+        onPassedQuestions(passedQueries);
+    }, [passedQueries]);
+
 
     onChoiceClick = (index) => {
         console.log('----------index----------');
@@ -27,9 +43,11 @@ const MultipleChoices = ({ options, correctAnswer, currentQuestionIndex, onChoic
         if (parseInt(index) === parseInt(correctAnswer)) {
             console.log('Correct');
             onHandleChecker(true);
+            return true;
         } else {
             console.log('Incorrect');
             onHandleChecker(false);
+            return false;
         }
     }
 
@@ -38,16 +56,16 @@ const MultipleChoices = ({ options, correctAnswer, currentQuestionIndex, onChoic
             className='col-12 col-lg-6'>
             {Object.entries(options).map(([key, value]) => (
                 <button 
-                    disabled={selectedOption && !passedQueries.includes(currentQuestionId)}
+                    disabled={passedQueries.includes(parseInt(currentQuestionIndex))}
                     data-bs-toggle
                     onClick={() => onOptionClick(key)}
                     id={key}
                     className={`` 
-                    + `${key === selectedOption ? 
-                        (selectedOption ==! parseInt(correctAnswer) ? 
-                        colors.query_br_Red : colors.query_br_Green) : 
-                        'rounded-md outline-none cursor-pointer shadow-md hover:shadow-xl transition text-start'
-                    }`}
+                        + `${key === selectedOption ? 
+                            (passedQueries.includes(currentQuestionIndex) ? 
+                            (onChoiceClick(key) ? colors.query_br_Green : colors.query_br_Red) : 
+                            'rounded-md outline-none cursor-pointer shadow-md hover:shadow-xl transition text-start') : 'rounded-md outline-none cursor-pointer shadow-md hover:shadow-xl transition text-start'
+                        }`}
                     style={{
                         fontSize: '16px',
                         color: colors.const_dark_text,

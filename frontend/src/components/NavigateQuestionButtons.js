@@ -1,24 +1,25 @@
 import React from 'react';
 import colors from '../colors';
+import NavigateButtonContext from '../pages/AutoTestPageWithContext'
 
-const NavigateQuestionButtons = ({ onQuestionClick, isAnsweredCorrectly }) => {
-    const [selectedOption, setSelectedOption] = React.useState(null);
-    const [GreenOrRed, setGreenOrRed] = React.useState(null);
+const NavigateQuestionButtons = ({ 
+    onQuestionClick, 
+    isAnsweredCorrectly, 
+    passedQueriesArray,
+}) => {
+
+    const value = React.useContext(NavigateButtonContext);
+    console.log('value: ', value);
+
+    const [selectedOption, setSelectedOption] = React.useState('');
+    const [passedQueries, setPassedQueries] = React.useState([]);
+    // const [GreenOrRed, setGreenOrRed] = React.useState(null);
 
     const onOptionClick = (index) => {
         setSelectedOption(index);
         onQuestionClick(index);
+        setPassedQueries([...passedQueries, passedQueriesArray]);
     }
-
-    React.useEffect(() => {
-        if (isAnsweredCorrectly === true) {
-            setGreenOrRed(true);
-        } else if (isAnsweredCorrectly === false) {
-            setGreenOrRed(false);
-        } else {
-            setGreenOrRed(null);
-        }
-    }, [isAnsweredCorrectly]);
 
     return (
         <div 
@@ -37,8 +38,9 @@ const NavigateQuestionButtons = ({ onQuestionClick, isAnsweredCorrectly }) => {
                     id={i}
                     className={`` 
                         + `${i === selectedOption ? 
-                            (!GreenOrRed ? 
-                            colors.query_br_Red : colors.query_br_Green) : 
+                            (isAnsweredCorrectly !== '' ?
+                            (!isAnsweredCorrectly ? colors.query_br_Red : colors.query_br_Green) : 
+                            'rounded-md outline-none cursor-pointer shadow-md hover:shadow-xl transition') :
                             'rounded-md outline-none cursor-pointer shadow-md hover:shadow-xl transition'
                     }`}
                     style={{

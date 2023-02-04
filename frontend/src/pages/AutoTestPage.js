@@ -8,6 +8,7 @@ import QuestionHelperText from '../components/QuestionHelperText';
 import Question from '../components/Question';
 import MultipleChoicesAndImageWrapper from '../components/MultipleChoicesAndImageWrapper';
 import MultipleChoices from '../components/MultipleChoices';
+import MultipleChoiceQ from '../components/MultipleChoiceQ';
 import QuestionImage from '../components/QuestionImage';
 import SecondaryPageWrapper from '../components/SecondaryPageWrapper';
 // import data from '../data';
@@ -24,11 +25,12 @@ const AutoTestPage = () => {
     const [isAnsweredCorrectly, setIsAnsweredCorrectly] = useState('');
     // const [buttonId, setButtonId] = useState('');
     const [loading, setLoading] = useState(true);
+    const [passedQueries, setPassedQueries] = useState([]);
 
     useEffect(() => {
         setTimeout(() => {
             setLoading(false);
-        }, 2000);
+        }, 1000);
     }, [testAmount]);
 
     return (
@@ -46,24 +48,31 @@ const AutoTestPage = () => {
                     {/* <div>Current Question: {currentQuestionIndex}</div> */}
                     {/* <div>Choosen Answer Index: {currentAnswer}</div> */}
                     <Question 
-                        query={questions[currentQuestionIndex].question} />
+                        query={questions[currentQuestionIndex].question} 
+                    />
                     <>
                         <MultipleChoicesAndImageWrapper>
                             <MultipleChoices 
                                 options={questions[currentQuestionIndex].options}
                                 correctAnswer={questions[currentQuestionIndex].answer} 
                                 userChoice={currentAnswer}
-                                x={currentQuestionIndex}
+                                currentQuestionIndex={currentQuestionIndex}
                                 onChoiceClick={(index) => setCurrentAnswer(index)} 
-                                onHandleChecker={(state) => setIsAnsweredCorrectly(state)}/>
+                                onHandleChecker={(state) => setIsAnsweredCorrectly(state)} 
+                                // onPassedQuestions={(queries) => setPassedQueries(...passedQueries, queries)} 
+                            />
                             <QuestionImage 
-                                image={questions[currentQuestionIndex].image} />
+                                image={questions[currentQuestionIndex].image} 
+                            />
                         </MultipleChoicesAndImageWrapper>
                         <QuestionHelperText 
-                            comment={questions[currentQuestionIndex].comment} />
+                            comment={questions[currentQuestionIndex].comment} 
+                        />
                         <NavigateQuestionButtons 
                             onQuestionClick={(index) => setCurrentQuestionIndex(index)}
-                            isAnsweredCorrectly={isAnsweredCorrectly} />
+                            isAnsweredCorrectly={isAnsweredCorrectly} 
+                            // passedQueriesArray={passedQueries}
+                        />
                     </> 
                 </SecondaryPageWrapper>
             }
